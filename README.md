@@ -16,5 +16,9 @@ List<DateTime> d = await showListDatePicker(
 );
 ```
 
-# Authors
+### Authors
  - Etienne Théodore theodoreetienne@gmail.com
+
+### Pub Link
+
+[list_date_picker](https://pub.dev/packages/list_date_picker)

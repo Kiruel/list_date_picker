@@ -30,8 +30,10 @@ flutter:
       android:
         package: com.example.list_date_picker
         pluginClass: ListDatePickerPlugin
+        fileName: list_date_picker.dart
       ios:
         pluginClass: ListDatePickerPlugin
+        fileName: list_date_picker.dart
       web:
         pluginClass: ListDatePickerPlugin
         fileName: list_date_picker.dart
