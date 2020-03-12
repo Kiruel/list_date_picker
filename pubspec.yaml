@@ -1,6 +1,6 @@
 name: list_date_picker
 description: This package return a `List<DateTime>` so you can select multiple date, he is based on showDatePicker from Material package.
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/Kiruel/list_date_picker
 
 environment:

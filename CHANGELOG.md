@@ -1,3 +1,7 @@
+## 1.0.1
+
+* Short description
+
 ## 1.0.0
 
 * Adding linter
