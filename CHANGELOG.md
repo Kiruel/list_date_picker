@@ -1,3 +1,7 @@
+## 1.0.4
+
+* Remove plugin class in pubspec
+
 ## 1.0.3
 
 * Fix plugin class
