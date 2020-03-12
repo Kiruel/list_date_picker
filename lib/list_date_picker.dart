@@ -79,10 +79,19 @@ class _DatePickerHeader extends StatelessWidget {
         yearColor = mode == DatePickerMode.year ? Colors.white : Colors.white70;
         break;
     }
+
+    // On flutter version 1.15 uncomment this:
+    // final TextStyle dayStyle =
+    //     headerTextTheme.headline4.copyWith(color: dayColor);
+    // final TextStyle yearStyle =
+    //     headerTextTheme.subtitle1.copyWith(color: yearColor);
+
+    // And remove this:
     final TextStyle dayStyle =
-        headerTextTheme.headline4.copyWith(color: dayColor);
+        headerTextTheme.headline.copyWith(color: dayColor);
     final TextStyle yearStyle =
-        headerTextTheme.subtitle1.copyWith(color: yearColor);
+        headerTextTheme.subtitle.copyWith(color: yearColor);
+    //
 
     Color backgroundColor;
     switch (themeData.brightness) {
@@ -420,7 +429,12 @@ class DayPicker extends StatelessWidget {
                 !selectableDayPredicate(dayToBuild));
 
         BoxDecoration decoration;
-        TextStyle itemStyle = themeData.textTheme.bodyText2;
+
+        // On flutter version >1.15 uncomment this:
+        // TextStyle itemStyle = themeData.textTheme.bodyText2;
+        // And remove this:
+        TextStyle itemStyle = themeData.textTheme.body2;
+        //
 
         bool isSelectedDay = false;
         for (var item in selectedDates) {
@@ -432,20 +446,31 @@ class DayPicker extends StatelessWidget {
         // print(selectedDates);
         if (isSelectedDay) {
           // The selected day gets a circle background highlight, and a contrasting text color.
-          itemStyle = themeData.accentTextTheme.bodyText1;
+
+          // On flutter version >1.15 uncomment this:
+          // itemStyle = themeData.accentTextTheme.bodyText1;
+          // And remove this:
+          itemStyle = themeData.accentTextTheme.body1;
+
           decoration = BoxDecoration(
             color: themeData.accentColor,
             shape: BoxShape.circle,
           );
         } else if (disabled) {
-          itemStyle = themeData.textTheme.bodyText2
+          // On flutter version >1.15 uncomment this:
+          // itemStyle = themeData.textTheme.bodyText2
+          //     .copyWith(color: themeData.disabledColor);
+          // And remove this:
+          itemStyle = themeData.textTheme.body2
               .copyWith(color: themeData.disabledColor);
         } else if (currentDate.year == year &&
             currentDate.month == month &&
             currentDate.day == day) {
           // The current day gets a different text color.
-          itemStyle = themeData.textTheme.bodyText1
-              .copyWith(color: themeData.accentColor);
+
+          // On flutter version >1.15 uncomment this:
+          itemStyle =
+              themeData.textTheme.body1.copyWith(color: themeData.accentColor);
         }
 
         Widget dayWidget = Container(
@@ -505,7 +530,10 @@ class DayPicker extends StatelessWidget {
               child: ExcludeSemantics(
                 child: Text(
                   localizations.formatMonthYear(displayedMonth),
-                  style: themeData.textTheme.subtitle1,
+                  // On flutter version >1.15 uncomment this:
+                  // style: themeData.textTheme.subtitle1,
+                  // And remove this:
+                  style: themeData.textTheme.subtitle,
                 ),
               ),
             ),
@@ -591,9 +619,8 @@ class _MonthPickerState extends State<MonthPicker>
   void initState() {
     super.initState();
     // Initially display the pre-selected date.
-    
-    final int monthPage =
-        _monthDelta(widget.firstDate, DateTime.now());
+
+    final int monthPage = _monthDelta(widget.firstDate, DateTime.now());
     _dayPickerController = PageController(initialPage: monthPage);
     _handleMonthPageChanged(monthPage);
     _updateCurrentDate();
@@ -882,7 +909,11 @@ class _YearPickerState extends State<YearPicker> {
   Widget build(BuildContext context) {
     assert(debugCheckHasMaterial(context));
     final ThemeData themeData = Theme.of(context);
-    final TextStyle style = themeData.textTheme.bodyText2;
+    // On flutter version >1.15 uncomment this:
+    // final TextStyle style = themeData.textTheme.bodyText2;
+    // And remove this:
+    final TextStyle style = themeData.textTheme.body2;
+
     return ListView.builder(
       dragStartBehavior: widget.dragStartBehavior,
       controller: scrollController,
@@ -891,8 +922,15 @@ class _YearPickerState extends State<YearPicker> {
       itemBuilder: (BuildContext context, int index) {
         final int year = widget.firstDate.year + index;
         final bool isSelected = year == widget.selectedDate.year;
+        // On flutter version >1.15 uncomment this:
+        // final TextStyle itemStyle = isSelected
+        //     ? themeData.textTheme.headline5
+        //         .copyWith(color: themeData.accentColor)
+        //     : style;
+        // And remove this:
+
         final TextStyle itemStyle = isSelected
-            ? themeData.textTheme.headline5
+            ? themeData.textTheme.headline
                 .copyWith(color: themeData.accentColor)
             : style;
         return InkWell(
@@ -967,16 +1005,23 @@ class _DatePickerDialogState extends State<_DatePickerDialog> {
   final GlobalKey _pickerKey = GlobalKey();
 
   void _vibrate() {
+    // On flutter version >1.15 uncomment this:
+    // switch (Theme.of(context).platform) {
+    //   case TargetPlatform.android:
+    //   case TargetPlatform.fuchsia:
+    //   case TargetPlatform.linux:
+    //   case TargetPlatform.windows:
+    //     HapticFeedback.vibrate();
+    //     break;
+    //   case TargetPlatform.iOS:
+    //   case TargetPlatform.macOS:
+    //     break;
+    // }
+    // And remove this:
     switch (Theme.of(context).platform) {
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
-      case TargetPlatform.linux:
-      case TargetPlatform.windows:
-        HapticFeedback.vibrate();
-        break;
       case TargetPlatform.iOS:
-      case TargetPlatform.macOS:
-        break;
     }
   }
 
@@ -1176,7 +1221,8 @@ Future<List<DateTime>> showListDatePicker({
   TextDirection textDirection,
   TransitionBuilder builder,
   bool useRootNavigator = true,
-  RouteSettings routeSettings,
+  // On flutter version >1.15 uncomment this:
+  // RouteSettings routeSettings,
 }) async {
   assert(initialDate != null);
   assert(firstDate != null);
@@ -1224,6 +1270,7 @@ Future<List<DateTime>> showListDatePicker({
     builder: (BuildContext context) {
       return builder == null ? child : builder(context, child);
     },
-    routeSettings: routeSettings,
+    // On flutter version >1.15 uncomment this:
+    // routeSettings: routeSettings,
   );
 }

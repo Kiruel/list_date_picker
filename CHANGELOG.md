@@ -1,3 +1,7 @@
+## 1.0.2
+
+* Downgrade flutter to stable channel for pass errors from analysis
+
 ## 1.0.1
 
 * Short description
