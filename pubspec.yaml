@@ -1,8 +1,7 @@
 name: list_date_picker
 description: A new flutter plugin project.
 version: 0.0.1
-author: "Etienne Théodore"
-homepage:
+homepage: https://github.com/Kiruel/list_date_picker
 
 environment:
   sdk: ">=2.6.0 <3.0.0"
