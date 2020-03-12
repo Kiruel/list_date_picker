@@ -1,3 +1,7 @@
+## 1.0.3
+
+* Fix plugin class
+
 ## 1.0.2
 
 * Downgrade flutter to stable channel for pass errors from analysis
