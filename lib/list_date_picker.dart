@@ -953,7 +953,7 @@ class _DatePickerDialogState extends State<_DatePickerDialog> {
     textDirection = Directionality.of(context);
     if (!_announcedInitialDate) {
       _announcedInitialDate = true;
-      if (_selectedDates.length > 0) {
+      if (_selectedDates.isNotEmpty) {
         SemanticsService.announce(
           localizations.formatFullDate(_selectedDates[0]),
           textDirection,
@@ -991,19 +991,6 @@ class _DatePickerDialogState extends State<_DatePickerDialog> {
         SemanticsService.announce(
             localizations.formatYear(_selectedDates[0]), textDirection);
       }
-    });
-  }
-
-  void _handleYearChanged(DateTime value) {
-    if (value.isBefore(widget.firstDate))
-      value = widget.firstDate;
-    else if (value.isAfter(widget.lastDate)) value = widget.lastDate;
-    if (value == _selectedDates[0]) return;
-
-    _vibrate();
-    setState(() {
-      _mode = DatePickerMode.day;
-      _selectedDates[0] = value;
     });
   }
 
@@ -1057,7 +1044,7 @@ class _DatePickerDialogState extends State<_DatePickerDialog> {
         assert(orientation != null);
         final Widget header = _DatePickerHeader(
           selectedDate:
-              _selectedDates.length > 0 ? _selectedDates[0] : widget.firstDate,
+              _selectedDates.isNotEmpty ? _selectedDates[0] : widget.firstDate,
           mode: _mode,
           onModeChanged: _handleModeChanged,
           orientation: orientation,

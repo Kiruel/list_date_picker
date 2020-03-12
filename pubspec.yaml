@@ -1,6 +1,6 @@
 name: list_date_picker
-description: A new flutter plugin project.
-version: 0.0.1
+description: This package is based on this code https://api.flutter.dev/flutter/material/showDatePicker.html. The showDatePicker return a DateTime, this package return a `List<DateTime>` so you can select multiple date.
+version: 1.0.0
 homepage: https://github.com/Kiruel/list_date_picker
 
 environment:
@@ -14,6 +14,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  pedantic: ^1.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
