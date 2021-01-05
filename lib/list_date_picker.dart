@@ -1089,7 +1089,7 @@ class _DatePickerDialogState extends State<_DatePickerDialog> {
         assert(orientation != null);
         final Widget header = _DatePickerHeader(
           selectedDate:
-              _selectedDates.isNotEmpty ? _selectedDates[0] : widget.firstDate,
+              _selectedDates.isNotEmpty ? _selectedDates[0] : widget.initialDate,
           mode: _mode,
           onModeChanged: _handleModeChanged,
           orientation: orientation,
